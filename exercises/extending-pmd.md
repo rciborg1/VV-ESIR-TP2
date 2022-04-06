@@ -55,12 +55,12 @@ The complete code of the rule definition and the test results can be found in th
 
 ### Test results
 
-We tested on the commons-cli-master project and found an if nested in the following class: 
+We tested on the commons-cli-master project and found an if nested in the following class:
 **\src\main\java\org\apache\commons\cli\DefaultParser.java**, line **436**.
 
 
-We also found false positives like on the following line: 
-**\src\main\java\org\apache\commons\cli\CommandLine.java**, line **210**. 
+We also found false positives like on the following line:
+**\src\main\java\org\apache\commons\cli\CommandLine.java**, line **210**.
 
 There is an else if of level 2 which has been signaled by our rule.
 

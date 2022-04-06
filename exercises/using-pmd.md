@@ -16,9 +16,40 @@ We have tested the **commons-cli-master** project with some rules that are:
 Here is a problem (true positive) detected on the first rule. The class is on the following path: 
 **commons-cli-master\src\test\java\org\apache\commons\cli\HelpFormatterTest.java** at line **356**.
 
+```
+    @Test
+    public void testPrintHelpWithEmptySyntax() {
+        final HelpFormatter formatter = new HelpFormatter();
+        try {
+            formatter.printHelp(null, new Options());
+            fail("null command line syntax should be rejected");
+        } catch (final IllegalArgumentException e) {
+            // expected
+        }
+
+        ...
+    }
+```
+
 The catch block is empty and contains no code to handle the exception.
 
 
 ### Solving the problem
 
 To solve this problem, we would add a display of the problem with the following instruction: e.printStackTrace();
+
+``````
+    @Test
+    public void testPrintHelpWithEmptySyntax() {
+        final HelpFormatter formatter = new HelpFormatter();
+        try {
+            formatter.printHelp(null, new Options());
+            fail("null command line syntax should be rejected");
+        } catch (final IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        ...
+    }
+```
+```
